@@ -257,13 +257,14 @@ class FitnessMachine(ABC, PropertiesManager):
 
         _LOGGER.debug("Initialization. Trying to establish connection.")
 
+        # Connect to all services to discover all characteristics including manufacturer-specific ones
+        # This is needed for devices like FITSHOW that use custom characteristics
         self._cli = await establish_connection(
             client_class=BleakClient,
             device=self._device,
             name=self.name,
             disconnected_callback=self._on_disconnect,
-            # we needed only two services: `Fitness Machine Service` and `Device Information Service`
-            services=[c.FTMS_UUID, DIS_UUID],
+            services=[],  # Empty list = discover all services
             kwargs=self._kwargs,
         )
 

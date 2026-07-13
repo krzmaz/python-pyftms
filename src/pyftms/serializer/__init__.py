@@ -1,6 +1,7 @@
 # Copyright 2024, Sergey Dudanov
 # SPDX-License-Identifier: Apache-2.0
 
+from .fitshow import FITSHOWSerializer
 from .list import ListSerializer
 from .model import (
     BaseModel,
@@ -14,6 +15,7 @@ from .serializer import Serializer
 
 __all__ = [
     "BaseModel",
+    "FITSHOWSerializer",
     "FtmsNumbers",
     "get_serializer",
     "ListSerializer",

@@ -24,6 +24,7 @@ from .backends import (
 )
 from .client import DisconnectCallback, FitnessMachine
 from .const import FTMS_UUID
+from .custom.detector import FITSHOWDetector
 from .errors import NotFitnessMachineError
 from .machines import get_machine
 from .manager import PropertiesManager
@@ -70,6 +71,20 @@ def get_client(
         adv_or_type = get_machine_type_from_service_data(adv_or_type)
 
     cls = get_machine(adv_or_type)
+
+    # Check if this is a FITSHOW device and need to use Treadmill with custom support
+    if adv_data:
+        # Try to extract device info from advertisement data
+        device_info: DeviceInfo = {}
+        if manufacturer_data := adv_data.manufacturer_data:
+            # Manufacturer data is available - extract info
+            for manufacturer_id, data in manufacturer_data.items():
+                # This is a simplified check - in practice, we may need to read DIS characteristic
+                # for more accurate device info
+                pass
+
+        # For now, we'll rely on the system's ability to detect FITSHOW during connection
+        # The Treadmill class will handle FITSHOW detection during _connect()
 
     return cls(
         ble_device,

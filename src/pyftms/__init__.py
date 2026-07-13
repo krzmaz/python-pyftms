@@ -27,8 +27,10 @@ from .client import (
     get_machine_type_from_service_data,
 )
 from .client.backends import FtmsEvents
+from .client.custom import FITSHOWDetector, FITSHOWTreadmill
 from .client.machines import CrossTrainer, IndoorBike, Rower, Treadmill
 from .models import (
+    FITSHOWData,
     IndoorBikeSimulationParameters,
     ResultCode,
     SpinDownControlCode,
@@ -44,6 +46,9 @@ __all__ = [
     "get_machine_type_from_service_data",
     "FitnessMachine",
     "CrossTrainer",
+    "FITSHOWData",
+    "FITSHOWDetector",
+    "FITSHOWTreadmill",
     "IndoorBike",
     "Treadmill",
     "Rower",

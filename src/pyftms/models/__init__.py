@@ -12,6 +12,7 @@ from .control_point import (
     ControlModel,
     ResultCode,
 )
+from .fitshow_data import FITSHOWData
 from .machine_status import MachineStatusCode, MachineStatusModel
 from .realtime_data import (
     CrossTrainerData,
@@ -34,6 +35,7 @@ from .training_status import (
 __all__ = [
     "CodeSwitchModel",
     "CrossTrainerData",
+    "FITSHOWData",
     "IndoorBikeData",
     "RowerData",
     "TreadmillData",
